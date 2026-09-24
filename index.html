@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Baby Mina ❤️</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Courier New', Courier, monospace;
+    }
+
+    body {
+      background-color: #ffe5ec;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .content {
+      background-color: #fff0f3;
+      border: 3px solid #ffb3c1;
+      border-radius: 8px;
+      width: 350px;
+      box-shadow: 0 8px 16px rgba(255, 179, 193, 0.4);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .window-header {
+      background-color: #ffb3c1;
+      padding: 8px 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+      font-weight: bold;
+    }
+
+    .window-buttons span {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      background-color: white;
+      margin-left: 4px;
+      border-radius: 2px;
+    }
+
+    .window-body {
+      padding: 24px;
+      text-align: center;
+    }
+
+    .heart-row {
+      color: #ff4d6d;
+      letter-spacing: 4px;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: 20px;
+      color: #594a4e;
+      margin-bottom: 24px;
+      line-height: 1.4;
+    }
+
+    .cat-container {
+      position: relative;
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 24px auto;
+      font-size: 50px;
+    }
+
+    .pixel-cat {
+      animation: catBounce 1.5s ease-in-out infinite;
+    }
+
+    @keyframes catBounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+
+    .cat-heart {
+      position: absolute;
+      width: 26px;
+      height: 26px;
+      z-index: 3;
+      opacity: 0;
+      pointer-events: none;
+      font-size: 24px;
+      bottom: 0;
+      left: 27px;
+    }
+
+    .content.is-won .cat-heart {
+      opacity: 1;
+      animation: floatHeart 1.8s ease-in-out infinite;
+    }
+
+    @keyframes floatHeart {
+      0%, 100% {
+        transform: translateY(0) scale(1);
+      }
+      50% {
+        transform: translateY(-12px) scale(1.2);
+      }
+    }
+
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    button {
+      padding: 8px 20px;
+      border: 2px solid #ffb3c1;
+      background-color: white;
+      color: #ff4d6d;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+    }
+
+    button:hover {
+      background-color: #ffb3c1;
+      color: white;
+    }
+
+    #noBtn {
+      position: relative;
+      z-index: 10;
+    }
+
+    .heart {
+      position: fixed;
+      color: #ff4d6d;
+      font-size: 25px;
+      animation: fall 3s linear forwards;
+      pointer-events: none;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-50px) rotate(0deg);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="content" id="cardContainer">
+
+    <div class="window-header">
+      <span class="title">LOVE ❤️</span>
+
+      <div class="window-buttons">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+
+    <div class="window-body">
+
+      <div class="heart-row">
+        ♥ ♥ ♥ ♥
+      </div>
+
+      <h1>
+        Do you love me, Baby Mina? ❤️
+      </h1>
+
+      <div class="cat-container">
+
+        <div class="pixel-cat">
+          🐱
+        </div>
+
+        <div class="cat-heart">
+          ❤️
+        </div>
+
+      </div>
+
+      <div class="btn-group">
+
+        <button id="yesBtn">
+          YES ❤️
+        </button>
+
+        <button id="noBtn">
+          NO
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+    const cardContainer = document.getElementById("cardContainer");
+
+    yesBtn.addEventListener("click", () => {
+
+      cardContainer.classList.add("is-won");
+
+      alert("I love you too, Baby Mina! ❤️");
+
+      for (let i = 0; i < 20; i++) {
+
+        const heart = document.createElement("div");
+
+        heart.className = "heart";
+        heart.innerHTML = "❤️";
+
+        heart.style.left =
+          Math.random() * window.innerWidth + "px";
+
+        heart.style.animationDelay =
+          Math.random() * 1.5 + "s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 4000);
+      }
+
+    });
+
+    function iwasButton() {
+
+      const maxX = window.innerWidth - noBtn.offsetWidth - 20;
+      const maxY = window.innerHeight - noBtn.offsetHeight - 20;
+
+      const x = Math.max(
+        10,
+        Math.random() * maxX
+      );
+
+      const y = Math.max(
+        10,
+        Math.random() * maxY
+      );
+
+      noBtn.style.position = "fixed";
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    }
+
+    noBtn.addEventListener("mouseenter", iwasButton);
+
+    noBtn.addEventListener("touchstart", (event) => {
+      event.preventDefault();
+      iwasButton();
+    });
+
+  </script>
+
+</body>
+</html>
